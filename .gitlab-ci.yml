@@ -25,11 +25,11 @@ build:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG"
 
-# Branch Builds
-build:
-  stage: build
-  script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
-    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
-  except:
-    - master
+# # Branch Builds
+# build:
+#   stage: build
+#   script:
+#     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+#     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+#   except:
+#     - master
