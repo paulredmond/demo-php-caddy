@@ -7,6 +7,7 @@ services:
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
+# Master
 build-master:
   stage: build
   script:
@@ -15,6 +16,16 @@ build-master:
   only:
     - master
 
+# Tags
+build:
+  stage: build
+  only:
+    - tags
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG"
+
+# Branch Builds
 build:
   stage: build
   script:
