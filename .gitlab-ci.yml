@@ -17,7 +17,7 @@ build-master:
     - master
 
 # Tags
-build:
+build-tags:
   stage: build
   only:
     - tags
